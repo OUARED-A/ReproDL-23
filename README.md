@@ -20,6 +20,46 @@ Through to the design tool, every cost model instance is saved as an XMI (XML Me
 Furthermore, to develop the front-end side of our design tool, we  have developed a web user interface that provides a designing work-space divided into four parts (see Figure \ref{fig:toolSimCost2}): (1) Context and Design Question, (2) Parameters Analysis, (3) CM Construction and (4) Results-Reports and Cost Exploration. 
 
 ![image](https://user-images.githubusercontent.com/42803883/218848962-e37eeabd-65f9-4604-8538-d1ade65e4b25.png)
+
+## FAIR BENCHMARK CHECKLIST
+In order to avoid the common pitfalls described throughout the
+paper you can use the following checklist as a data management
+systems oriented guide:
+
+• Choosing your Benchmarks.
+□ Benchmark covers whole evaluation space
+□ Justify picking benchmark subset
+□ Benchmark stresses functionality in the evaluation space
+• Reproducible. Available shall be:
+□ Hardware configuration
+□ DBMS parameters and version
+□ Source code or binary files
+□ Data, schema & queries
+• Optimization.
+□ Compilation flags
+□ System parameters
+• Apples vs Apples.
+□ Similar functionality
+□ Equivalent workload
+• Comparable tuning.
+□ Different data
+□ Various workloads
+• Cold/warm/hot runs.
+□ Differentiate between cold and hot runs
+□ Cold runs: Flush OS and CPU caches
+□ Hot runs: Ignore initial runs
+• Preprocessing.
+□ Ensure preprocessing is the same between systems
+□ Be aware of automatic index creation
+• Ensure correctness.
+□ Verify results
+□ Test different data sets
+□ Corner cases work
+• Collecting Results.
+□ Do several runs to reduce interference
+□ Check standard deviation for multiple runs
+□ Report robust metrics (e.g., median and confidence intervals)
+
 ## Further improvements
 
 If you wish, you're welcome to participate in the Explain-Tun or to make suggestions ! 
