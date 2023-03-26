@@ -1,0 +1,21 @@
+# Debug Levels ================================================= =============
+# 10 = WARNINGS
+# 01 = CREATE LOG FILE ON DISK
+debug=11
+# getAllToDebug query defined in costmodel.parameters file
+debug_all_concepts=0
+# getConceptToDebug query defined in sqwrl.parameters file
+debug_concepts_query=0
+debug_concepts_query_file=C:/_workspace/comorp/instance.xmi
+# Result of executed functions (libraries)
+debug_pre_result_functions=0
+# All concepts effectively instantiated in the execution of the functions
+debug_pos_concepts_preconditions=0
+# Show the concepts that are sent to the instance
+debug_params_instantiate=0
+# Shows the parameters of the library that will be executed
+debug_params_library=0
+# Shows the output parameters of the libraries
+debug_parameters_pre_conditions=0
+# Show the Source object in JSON format
+debug_source_to_json=0

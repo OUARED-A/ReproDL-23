@@ -1,0 +1,23 @@
+# Framework =================================================== ======================
+# System configuration file
+version=0.1
+# Number of captured commands displayed in the interface
+size_workload_ide=20
+# Defines whether to archive all communications files (determines whether the interface will be used or not)
+archive_log_files=0
+# Design Rules ================================================= =======================
+# 0 - disables all rules and enables only those contained in selected heuristics
+#1 - executes all Design rules
+disable_rules=0
+#Use (or not) the Agrawal algorithm to rewrite queries
+apply_algorithms_Design=1
+# signature for queries executed by the tool
+signature=/*COMORP*/
+# internationalization
+use_bundle=1
+language=en
+country=US
+#interval between one capture and another
+intervalToCapture=1
+folderLog=log
+insertTableLog=0

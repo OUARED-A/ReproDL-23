@@ -1,0 +1,3 @@
+# PATHS that the tool uses to find resources and files
+filemetamodel=metamodel/CostDL.ecore
+urlplan=http://localhost:2222/gethypotheticalplan/index.php?sql=

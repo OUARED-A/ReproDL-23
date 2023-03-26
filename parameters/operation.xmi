@@ -1,0 +1,42 @@
+# Framework to support rapid prototyping of database cost models .
+# Abdelkader OUARED [a_ouared@esi.dz].
+# Labo LIAS - 2022.
+#
+#==================================== PARAMETERS AND JOKERS ======== ==================================
+# IMP_CHAR = Inserts the implication operator;
+# IMP_AND = Inserts the AND operator;
+# *HEURISTIC* = Wildcard name of the heuristic that is passed
+#========================================================= =================================================
+
+#==================================== INDIVIDUAL SGBD PARAMETERS ========== ==============================
+DBMSdatabase=tpch
+DBMStemName=PostgreSQL
+SGBDtemCPUCost=1
+# hasDiskSizeSF in number of pages (1GB)
+DBMStemSizeDiskSF=16384
+SGBDtemCoefficientCost_IO_CPU=1
+DBMStemCostInputOutput=1
+SGBDtemValorFatorFill=1.5
+SGBDtemSizePage=8192
+prefixinferred=OT_
+#
+#========================================================= ========================================================== =====
+
+#==================================== QUESTIONS USED IN THE FRAMEWORK ========= ==================================
+getNameAllHeuristics=Heuristic(?heu) AND_CHAR hasName(?heu, ?name) AND_CHAR hasVersion(?heu, ?version) AND_CHAR hasRank(?heu, ?rank) AND_CHAR hasAuthor(?heu, ?author) IMP_CHAR sqwrl:select(?heu) , ?name, ?version, ?rating, ?author)
+getAllRulesFromHeuristic=Heuristic(*HEURISTIC*) AND_CHAR Rule(?nameRule) AND_CHAR define(*HEURISTIC*, ?nameRule) AND_CHAR hasName(?nameRule, ?data) IMP_CHAR sqwrl:select(?data)
+getAllClausuleToDML=DML Command(?dml) AND_CHAR hasDescription(?dml, ?descDml) AND_CHAR has(?dml, ?clause) AND_CHAR hasDescription(?clause, ?data) IMP_CHAR sqwrl:select(?data, ?dml, ?descDml) AND_CHAR sqwrl :orderBy(?dml)
+getAllDML=DML Command(?name) AND_CHAR hasDescription(?name, ?desc) IMP_CHAR sqwrl:select(?name, ?desc)
+getActions=RealMaterializedView(?vm) AND_CHAR hasStatus(?vm, ?situation) AND_CHAR hasName(?vm, ?name) AND_CHAR isGeneratedBy(?vmh, ?vm) AND_CHAR hasNumberHypotheticPages(?vmh, ?cost) AND_CHAR hasAccumulated BonusValue(?vmh, ? bonus) AND_CHAR hasEstimatedCreationCostValue(?vmh, ?Creationcost) AND_CHAR hasDescription(?vm, ?command) AND_CHAR createdBy(?vm, ?heu) AND_CHAR Heuristic(?heu) AND_CHAR hasName(?heu, ?HeuristicName) AND_CHAR originates(?exec, ?vmh) AND_CHAR matches(?exec, ?sqlo) AND_CHAR hasDescription(?sql, ?sql) IMP_CHAR sqwrl:select(?vm, ?name, ?bonus, ?Heuristicname, ?Creation cost, ?command, ?situation, ?cost, ?sql) AND_CHAR sqwrl:orderBy(?CostCreation)
+getCandidateActions=HipotheticalMaterializedView(?vmh) AND_CHAR hasStatus(?vmh, ?situation) AND_CHAR hasName(?vmh, ?name) AND_CHAR hasNumberHypotheticPages(?vmh, ?cost) AND_CHAR hasAccumulatedBonusValue(?vmh, ?bonus) AND_CHAR hasEstimatedCreationCostValue(?vmh, ?cost) costCreation) AND_CHAR hasDescription(?vmh, ?command) AND_CHAR hasName(HeuristicMaterializedViewCandidates, ?HeuristicName) AND_CHAR originates(?exec, ?vmh) AND_CHAR matches(?exec, ?sqlobj) AND_CHAR hasDescription(?sqlobj, ?sql) IMP_CHAR sqwrl:select (?vmh, ?name, ?bonus, ?Heuristicname, ?Creation cost, ?command, ?status, ?cost, ?sql)
+
+
+# ---------------- justifications
+getJustify=Action(?action) AND_CHAR hasDescription(?action, "*HEURISTICS*") AND_CHAR hasJustification(?action, ?justification) IMP_CHAR sqwrl:select(?justification)
+getJustifyQuery=DML Command(?dml) AND_CHAR hasDescription(?dml, ?query) AND_CHAR matches(?execution, ?dml) AND_CHAR ExecutionCommand(?execution) AND_CHAR produces(?execution, ?plan) AND_CHAR ExecutionPlan(?cloth) AND_CHAR has ExecutionCost(? plan, ?Actualcost) AND_CHAR originates(?execution, ?structure) AND_CHAR StructureAccess(?structure) AND_CHAR hasDescription(?structure, ?vm) IMP_CHAR sqwrl:select(?dml, ?query, ?execution, ?structure, ?vm, ? real cost)
+
+
+#---------------------- USED IN EXECUTING FUNCTIONS -------------- --------
+getAllParametersFromPreConditions=hasPreCondition(?heu, ?con) AND_CHAR isInstantiatedBy(?con, ?function) AND_CHAR hasOrdemInstançacao(?con, ?order) AND_CHAR hasName(?con, ?name) AND_CHAR hasParameterOutput(?function, ?paramOutput) AND_CHAR hasName(? function, "*FUNCTIONNAME*") AND_CHAR Parameter(?paramOutput) AND_CHAR hasDatatype(?paramOutput, ?paramDataType) AND_CHAR hasType(?paramOutput, ?TypeParam) AND_CHAR hasConcept(?paramOutput, ?conceptParam) IMP_CHAR sqwrl:select(?heu, ? con, ?name, ?paramOutput, ?order, ?TypeParam, ?conceptParam, ?paramDataType) AND_CHAR sqwrl:orderBy(?order)
+getAllPreConditions=Heuristic(?heu) AND_CHAR hasPreCondition(?heu, ?con) AND_CHAR isInstantiatedBy(?con, ?function) AND_CHAR hasOrderInstance(?con, ?order) AND_CHAR hasName(?con, ?name) AND_CHAR hasName(?function, ? functionname) AND_CHAR hasClass(?function, ?class) AND_CHAR hasLibrary(?function, ?library) IMP_CHAR sqwrl:select(?heu, ?con, ?name, ?functionname, ?class, ?order, ?library) AND_CHAR sqwrl:orderBy (?order)
+#---------------------- USED IN EXECUTION OF FUNCTIONS
