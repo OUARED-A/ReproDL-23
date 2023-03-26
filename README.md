@@ -26,39 +26,39 @@ In order to avoid the common pitfalls described throughout the
 paper you can use the following checklist as a data management
 systems oriented guide:
 
-*• Choosing your Benchmarks.
-*□ Benchmark covers whole evaluation space
-*□ Justify picking benchmark subset
-*□ Benchmark stresses functionality in the evaluation space
-*• Reproducible. Available shall be:
-*□ Hardware configuration
-*□ DBMS parameters and version
-*□ Source code or binary files
-*□ Data, schema & queries
-*• Optimization.
-*□ Compilation flags
-*□ System parameters
-*• Apples vs Apples.
-*□ Similar functionality
-*□ Equivalent workload
-*• Comparable tuning.
-*□ Different data
-*□ Various workloads
-*• Cold/warm/hot runs.
-*□ Differentiate between cold and hot runs
-*□ Cold runs: Flush OS and CPU caches
-*□ Hot runs: Ignore initial runs
-*• Preprocessing.
-*□ Ensure preprocessing is the same between systems
-*□ Be aware of automatic index creation
-*• Ensure correctness.
-*□ Verify results
-*□ Test different data sets
-*□ Corner cases work
-*• Collecting Results.
-*□ Do several runs to reduce interference
-*□ Check standard deviation for multiple runs
-*□ Report robust metrics (e.g., median and confidence intervals)
+* • Choosing your Benchmarks.
+* □ Benchmark covers whole evaluation space
+* □ Justify picking benchmark subset
+* □ Benchmark stresses functionality in the evaluation space
+* • Reproducible. Available shall be:
+* □ Hardware configuration
+* □ DBMS parameters and version
+* □ Source code or binary files
+* □ Data, schema & queries
+* • Optimization.
+* □ Compilation flags
+* □ System parameters
+* • Apples vs Apples.
+* □ Similar functionality
+* □ Equivalent workload
+* • Comparable tuning.
+* □ Different data
+* □ Various workloads
+* • Cold/warm/hot runs.
+* □ Differentiate between cold and hot runs
+* □ Cold runs: Flush OS and CPU caches
+* □ Hot runs: Ignore initial runs
+* • Preprocessing.
+* □ Ensure preprocessing is the same between systems
+* □ Be aware of automatic index creation
+* • Ensure correctness.
+* □ Verify results
+* □ Test different data sets
+* □ Corner cases work
+* • Collecting Results.
+* □ Do several runs to reduce interference
+* □ Check standard deviation for multiple runs
+* □ Report robust metrics (e.g., median and confidence intervals)
 
 ## Further improvements
 
