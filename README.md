@@ -26,10 +26,10 @@ In order to avoid the common pitfalls described throughout the
 paper you can use the following checklist as a data management
 systems oriented guide:
 
-• Choosing your Benchmarks.
-□ Benchmark covers whole evaluation space
-□ Justify picking benchmark subset
-□ Benchmark stresses functionality in the evaluation space
+###• Choosing your Benchmarks.
+###□ Benchmark covers whole evaluation space
+###□ Justify picking benchmark subset
+###□ Benchmark stresses functionality in the evaluation space
 • Reproducible. Available shall be:
 □ Hardware configuration
 □ DBMS parameters and version
